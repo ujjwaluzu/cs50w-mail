@@ -122,5 +122,13 @@ function view_email(id){
         <button class="btn btn-sm btn-outline-primary" id="reply">Reply</button>
         <button class="btn btn-sm btn-outline-secondary" id="archive">${email.archived ? "Unarchive" : "Archive"}</button>
       `;
+
+
+    fetch(`emails/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+        read: true
+    })
+})
 });
 }
