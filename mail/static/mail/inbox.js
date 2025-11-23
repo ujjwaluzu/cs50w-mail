@@ -145,3 +145,11 @@ function toggle_archived(id, currentStatus){
 }).then(() => load_mailbox("inbox"));
 }
 
+function reply_email(email) {
+  compose_email();
+  document.querySelector("#compose-recipients").value = email.sender;
+  document.querySelector("#compose-subject").value =
+    email.subject.startsWith("Re:") ? email.subject : `Re: ${email.subject}`;
+  document.querySelector("#compose-body").value = 
+    `\n\nOn ${email.timestamp}, ${email.sender} wrote:\n${email.body}`;
+}
