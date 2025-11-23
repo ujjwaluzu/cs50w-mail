@@ -85,6 +85,12 @@ function showSection(section) {
       emails.forEach(email => {
         const emailDiv = document.createElement('div');
         emailDiv.className = "email-item";
+        emailDiv.style.border = '1px solid #ccc';
+        emailDiv.style.padding = '10px';
+        emailDiv.style.margin = '5px';
+        emailDiv.style.cursor = 'pointer';
+        emailDiv.style.backgroundColor = email.read ? '#f2f2f2' : 'white';
+        emailDiv.addEventListener("click", () => view_email(email.id));
 
         emailDiv.innerHTML = `
           <strong>${email.sender}</strong> &nbsp; | &nbsp;
@@ -98,3 +104,24 @@ function showSection(section) {
 }
 
 
+function view_email(id){
+  fetch(`/emails/${id}`)
+  .then(response => response.json())
+  .then(email => {
+    document.querySelector('#emails-view').style.display = 'block';
+    document.querySelector('#compose-view').style.display = 'none';
+    // Print email
+    console.log(email);
+
+    document.querySelector("#emails-view").innerHTML = `
+        <h5><strong>From:</strong> ${email.sender}</h5>
+        <h5><strong>To:</strong> ${email.recipients.join(", ")}</h5>
+        <h5><strong>Subject:</strong> ${email.subject}</h5>
+        <h5><strong>Timestamp:</strong> ${email.timestamp}</h5>
+        <hr>
+        <p>${email.body}</p>
+        <button class="btn btn-sm btn-outline-primary" id="reply">Reply</button>
+        <button class="btn btn-sm btn-outline-secondary" id="archive">${email.archived ? "Unarchive" : "Archive"}</button>
+      `;
+});
+}
