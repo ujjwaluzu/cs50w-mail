@@ -110,8 +110,7 @@ function view_email(id){
   .then(email => {
     document.querySelector('#emails-view').style.display = 'block';
     document.querySelector('#compose-view').style.display = 'none';
-    // Print email
-    console.log(email);
+
 
     document.querySelector("#emails-view").innerHTML = `
         <h5><strong>From:</strong> ${email.sender}</h5>
