@@ -124,7 +124,7 @@ function view_email(id){
       `;
 
 
-      fetch(`emails/${id}`, {
+      fetch(`/emails/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
         read: true
@@ -135,3 +135,13 @@ function view_email(id){
     document.querySelector("#reply").addEventListener("click", ()=> reply_email(email));
 });
 }
+
+function toggle_archived(id, currentStatus){
+  fetch(`/emails/${id}`, {
+  method: 'PUT',
+  body: JSON.stringify({
+      archived: !currentStatus
+  })
+}).then(() => load_mailbox("inbox"));
+}
+
