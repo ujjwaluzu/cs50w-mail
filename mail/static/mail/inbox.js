@@ -124,11 +124,14 @@ function view_email(id){
       `;
 
 
-    fetch(`emails/${id}`, {
-    method: 'PUT',
-    body: JSON.stringify({
+      fetch(`emails/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
         read: true
     })
-})
+    });
+
+    document.querySelector("#archive").addEventListener("click", ()=> toggle_archived(id, email.archived));
+    document.querySelector("#reply").addEventListener("click", ()=> reply_email(email));
 });
 }
