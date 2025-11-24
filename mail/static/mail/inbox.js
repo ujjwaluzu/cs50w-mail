@@ -53,6 +53,7 @@ function send_email(event) {
   const subject = document.querySelector("#compose-subject").value;
   const body = document.querySelector("#compose-body").value;
 
+
   fetch('/emails', {
     method: 'POST',
     body: JSON.stringify({
@@ -64,10 +65,20 @@ function send_email(event) {
     .then(response => response.json())
     .then(result => {
       console.log("✅ server response:", result);
-      load_mailbox('sent');
+
+      if (!result.error){
+        load_mailbox('sent');
+      }else{
+        document.querySelector('#compose-result').innerHTML = result.error;
+        document.querySelector('#compose-result').style.display = 'block';
+      
+      }
+      
     })
     .catch(err => {
       console.error("❌ fetch error:", err);
+
+      
     });
 }
 
@@ -81,6 +92,15 @@ function showSection(section) {
       // clear previous emails but keep the heading
       container.innerHTML =
         `<h3>${section.charAt(0).toUpperCase() + section.slice(1)}</h3>`;
+      if (emails.length === 0){
+        const emailDiv = document.createElement('div');
+        emailDiv.innerHTML = "No emails"
+        emailDiv.style.color = "gray";
+        emailDiv.style.textAlign = "center";
+        emailDiv.style.marginTop = "10px";
+        container.appendChild(emailDiv);
+        return;  // ⬅ important!
+      }
 
       emails.forEach(email => {
         const emailDiv = document.createElement('div');
