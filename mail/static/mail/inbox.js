@@ -30,6 +30,14 @@ function compose_email() {
   document.querySelector('#compose-recipients').value = '';
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
+  const resultBox = document.querySelector('#compose-result');
+  if (resultBox) {
+    resultBox.style.display = 'none';
+    resultBox.innerHTML = '';
+  }
+
+
+  
 }
 
 function load_mailbox(mailbox) {
@@ -104,19 +112,24 @@ function showSection(section) {
 
       emails.forEach(email => {
         const emailDiv = document.createElement('div');
-        emailDiv.className = "email-item";
-        emailDiv.style.border = '1px solid #ccc';
-        emailDiv.style.padding = '10px';
-        emailDiv.style.margin = '5px';
-        emailDiv.style.cursor = 'pointer';
-        emailDiv.style.backgroundColor = email.read ? '#f2f2f2' : 'white';
+        // emailDiv.className = "email-item";
+        // emailDiv.style.border = '1px solid #ccc';
+        // emailDiv.style.padding = '10px';
+        // emailDiv.style.margin = '5px';
+        // emailDiv.style.cursor = 'pointer';
+        let firstColumn = (section != "sent") ? `From: ${email.sender}` : `<strong>To: ${email.recipients}</strong>`;
+       
         emailDiv.addEventListener("click", () => view_email(email.id));
 
         emailDiv.innerHTML = `
-          <strong>${email.sender}</strong> &nbsp; | &nbsp;
-          ${email.subject} 
-          <span style="float:right; color:gray;">${email.timestamp}</span>
+          <div class="col-6 col-sm-7 col-md-4 p-2 text-truncate">${firstColumn}</div>
+          <div class="col-6 col-sm-5 col-md-3 p-2 order-md-2 small text-right text-muted font-italic font-weight-lighter align-self-center">${email.timestamp}</div>
+          <div class="col px-2 pb-2 pt-md-2 order-md-1 text-truncate">${email.subject}</div>
+          
+  
         `;
+        emailDiv.className = 'row justify-content-between border border-left-0 border-right-0 border-bottom-0 pointer-link p-2';
+        emailDiv.style.backgroundColor = email.read ? '#f2f2f2' : 'white';
 
         container.appendChild(emailDiv);
       });
