@@ -146,14 +146,29 @@ function view_email(id){
 
 
     document.querySelector("#emails-view").innerHTML = `
-        <h5><strong>From:</strong> ${email.sender}</h5>
-        <h5><strong>To:</strong> ${email.recipients.join(", ")}</h5>
-        <h5><strong>Subject:</strong> ${email.subject}</h5>
-        <h5><strong>Timestamp:</strong> ${email.timestamp}</h5>
+   
+        <div class="d-flex justify-content-between flex-nowrap-sm flex-wrap">
+        <h4 class="text-wrap">${email.subject}</h5>
+        <small class="mr-lg-4 ml-0 ml-sm-2 font-weight-lighter align-self-center text-muted text-right"><em>${email.timestamp}</em></small>
+        </div>
+
+        <div class="d-flex justify-content-between flex-nowrap-sm flex-wrap">
+        <div>
+          <h5><strong>From:</strong> ${email.sender}</h5>
+          <h5><strong>To:</strong> ${email.recipients.join(", ")}</h5>
+        </div>
+        <div>
+          <button class="btn btn-sm btn-outline-primary" id="reply">Reply</button>
+        <button class="btn btn-sm btn-outline-secondary" id="archive">${email.archived ? "Unarchive" : "Archive"}</button>
+        </div>
+        </div>
+
+        
+        
+    
         <hr>
         <p>${email.body}</p>
-        <button class="btn btn-sm btn-outline-primary" id="reply">Reply</button>
-        <button class="btn btn-sm btn-outline-secondary" id="archive">${email.archived ? "Unarchive" : "Archive"}</button>
+         
       `;
 
 
