@@ -1,7 +1,8 @@
 # Mail
 
 ## 📘 Project Description
-
+[screencast](https://youtu.be/pvPQ_UUkhbA?si=0GlpQkQbAP_Z_B5Q)
+---
 Mail is a single-page email client application built as part of **CS50’s Web Programming with Python and JavaScript (CS50W)**. The project simulates the core functionality of an email service (similar to Gmail), allowing users to send, receive, read, archive, and reply to emails using a dynamic front-end powered entirely by JavaScript.
 
 The backend API is fully provided, and the primary focus of this project is implementing a responsive **single-page application (SPA)** that communicates with the server using asynchronous API calls (`fetch`) and updates the user interface without reloading the page.
