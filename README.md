@@ -1,6 +1,6 @@
 # Mail
 
-## 📘 Project Description
+##  Project Description
 [screencast](https://youtu.be/pvPQ_UUkhbA?si=0GlpQkQbAP_Z_B5Q)
 ---
 Mail is a single-page email client application built as part of **CS50’s Web Programming with Python and JavaScript (CS50W)**. The project simulates the core functionality of an email service (similar to Gmail), allowing users to send, receive, read, archive, and reply to emails using a dynamic front-end powered entirely by JavaScript.
@@ -9,7 +9,7 @@ The backend API is fully provided, and the primary focus of this project is impl
 
 ---
 
-## 🎯 Project Objectives
+##  Project Objectives
 
 The primary goals of this project are to:
 
@@ -22,7 +22,7 @@ The primary goals of this project are to:
 
 ---
 
-## 🚀 Features
+##  Features
 
 - User registration, login, and logout
 - Inbox, Sent, and Archive mailboxes
@@ -35,7 +35,7 @@ The primary goals of this project are to:
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - Python  
 - Django  
@@ -45,7 +45,7 @@ The primary goals of this project are to:
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 - `mail/` – Main application containing views, templates, static files, and API logic  
 - `project3/` – Django project configuration  
@@ -56,7 +56,7 @@ The primary goals of this project are to:
 
 ---
 
-## 🧠 Learning Outcomes
+##  Learning Outcomes
 
 Through this project, I gained hands-on experience with:
 
@@ -69,7 +69,7 @@ Through this project, I gained hands-on experience with:
 
 ---
 
-## ▶️ Running the Project
+##  Running the Project
 1. Install dependencies:
    ```bash
    pip install django
